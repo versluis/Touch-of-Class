@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *positionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *forceLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *precisionSwitch;
+@property (strong, nonatomic) IBOutlet UILabel *touchTypeLabel;
 
 
 @end
@@ -36,12 +38,27 @@
 - (void)trackTouch:(UITouch *)touch {
     
     // track the current position
-    CGPoint position = [touch locationInView:self.view];
-    NSString *xPosition = [NSString stringWithFormat:@"%f", position.x];
-    NSString *yPosition = [NSString stringWithFormat:@"%f", position.y];
+    CGPoint position;
+    NSString *xPosition;
+    NSString *yPosition;
+    
+    if (self.precisionSwitch.on) {
+        
+        // use precise location (iOS 9.1 and above)
+        position = [touch preciseLocationInView:self.view];
+        xPosition = [NSString stringWithFormat:@"%f", position.x];
+        yPosition = [NSString stringWithFormat:@"%f", position.y];
+    
+    } else {
+        
+        // use regular precision (iOS 9.0 and lower)
+        position = [touch locationInView:self.view];
+        xPosition = [NSString stringWithFormat:@"%f", position.x];
+        yPosition = [NSString stringWithFormat:@"%f", position.y];
+    }
     
     // update position labels
-    NSString *positionText = [NSString stringWithFormat:@"X = %@ / Y = %@", xPosition, yPosition];
+    NSString *positionText = [NSString stringWithFormat:@"Position: X = %@ / Y = %@", xPosition, yPosition];
     self.positionLabel.text = positionText;
     
     // update force label (if 3D Touch is available

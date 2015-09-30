@@ -23,8 +23,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Force: xxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd1-h9-Ph7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Force: xxx" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd1-h9-Ph7">
                                 <rect key="frame" x="502" y="559" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Precision:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WT-iq-pnT">
+                                <rect key="frame" x="20" y="33" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFR-ij-Gex">
+                                <rect key="frame" x="103" y="28" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch Type: xxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuV-Dd-N58">
+                                <rect key="frame" x="456" y="33" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,15 +47,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xd1-h9-Ph7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="SFq-wT-wEX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xd1-h9-Ph7" secondAttribute="trailing" id="9aJ-I2-rOl"/>
                             <constraint firstItem="Dda-fp-hVT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UNA-2O-b3C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RuV-Dd-N58" secondAttribute="trailing" id="WJ2-ck-SbA"/>
                             <constraint firstAttribute="bottom" secondItem="Dda-fp-hVT" secondAttribute="bottom" constant="20" symbolic="YES" id="jV1-dj-CkC"/>
-                            <constraint firstItem="xd1-h9-Ph7" firstAttribute="baseline" secondItem="Dda-fp-hVT" secondAttribute="baseline" id="z6j-i9-lJN"/>
+                            <constraint firstItem="RuV-Dd-N58" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="uFo-jI-nd3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="xd1-h9-Ph7" secondAttribute="leading" id="wZC-2a-E3e"/>
+                            <constraint firstItem="xd1-h9-Ph7" firstAttribute="baseline" secondItem="Dda-fp-hVT" secondAttribute="baseline" id="z6j-i9-lJN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-29"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wZC-2a-E3e"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="wZC-2a-E3e"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="forceLabel" destination="xd1-h9-Ph7" id="RV1-Vf-W21"/>
                         <outlet property="positionLabel" destination="Dda-fp-hVT" id="48A-Go-ZIQ"/>
+                        <outlet property="precisionSwitch" destination="yFR-ij-Gex" id="d5i-lJ-RDo"/>
+                        <outlet property="touchTypeLabel" destination="RuV-Dd-N58" id="K8v-O8-1r3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
