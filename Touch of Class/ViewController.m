@@ -65,6 +65,19 @@
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         self.forceLabel.text = [NSString stringWithFormat:@"Force: %f", touch.force];
     }
+    
+    // update touch type label
+    if (touch.type == UITouchTypeDirect) {
+        self.touchTypeLabel.text = @"Touch Type: Finger";
+    }
+    
+    if (touch.type == UITouchTypeIndirect) {
+        self.touchTypeLabel.text = @"Touch Type: Indirect";
+    }
+    
+    if (touch.type == UITouchTypeStylus) {
+        self.touchTypeLabel.text = @"Touch Type: Apple Pencil";
+    }
 }
 
 #pragma mark - Responders
