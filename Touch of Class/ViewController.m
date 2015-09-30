@@ -20,7 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // if 3D Touch is not available, remove label
+    if (self.traitCollection.forceTouchCapability != UIForceTouchCapabilityAvailable) {
+        self.forceLabel.text = @"Force: n/a";
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,19 +35,41 @@
 
 - (void)trackTouch:(UITouch *)touch {
     
-    // grab the current position
+    // track the current position
     CGPoint position = [touch locationInView:self.view];
     NSString *xPosition = [NSString stringWithFormat:@"%f", position.x];
     NSString *yPosition = [NSString stringWithFormat:@"%f", position.y];
     
-    // update the labels
+    // update position labels
     NSString *positionText = [NSString stringWithFormat:@"X = %@ / Y = %@", xPosition, yPosition];
     self.positionLabel.text = positionText;
+    
+    // update force label (if 3D Touch is available
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        self.forceLabel.text = [NSString stringWithFormat:@"Force: %f", touch.force];
+    }
 }
 
 #pragma mark - Responders
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self handleTouches:touches withEvent:event];
+}
+
+
+
+- (void)handleTouches:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     // is it a touch?
     if (event.type == UIEventTypeTouches) {
