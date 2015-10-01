@@ -61,20 +61,21 @@
     NSString *positionText = [NSString stringWithFormat:@"Position: X = %@ / Y = %@", xPosition, yPosition];
     self.positionLabel.text = positionText;
     
-    // update force label (if 3D Touch is available
+    // update force label (if 3D Touch is available)
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         self.forceLabel.text = [NSString stringWithFormat:@"Force: %f", touch.force];
     }
     
     // update touch type label
+    // how did the user touch the screen?
     if (touch.type == UITouchTypeDirect) {
         self.touchTypeLabel.text = @"Touch Type: Finger";
     }
-    
+
     if (touch.type == UITouchTypeIndirect) {
         self.touchTypeLabel.text = @"Touch Type: Indirect";
     }
-    
+
     if (touch.type == UITouchTypeStylus) {
         self.touchTypeLabel.text = @"Touch Type: Apple Pencil";
     }
